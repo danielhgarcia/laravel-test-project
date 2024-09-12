@@ -1,7 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-
+use App\Http\Controllers\DocumentController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -15,4 +15,8 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
     return view('welcome');
-});
+})->name('welcome');
+
+Route::get('/import', [DocumentController::class, 'showImportPage'])->name('documents.import.page');
+Route::post('/import', [DocumentController::class, 'import'])->name('documents.import');
+Route::get('/documents', [DocumentController::class, 'index'])->name('documents.index');
